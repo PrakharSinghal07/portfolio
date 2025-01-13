@@ -156,7 +156,7 @@ const formSubmitStatus = document.querySelector('.contact__form-submit-status');
 formSubmitStatus.style.visibility = 'hidden';
 window.onload = (function () {
         emailjs.init({
-            publicKey: "uiE-lWPvGZB4_vaqQ",
+            publicKey: "uiE-lWPvGZB4_vaqQ8",
         });
     })();
 
