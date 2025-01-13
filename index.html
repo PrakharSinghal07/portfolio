@@ -499,20 +499,21 @@
                 </div>
                 <div class="contact__content">
                     <h3 class="contact__title">Send me a message</h3>
-                    <form action="" class="contact__form">
+                    <form action="" id="contactForm" class="contact__form">
                         <div class="contact__form-div">
                             <label for="" class="contact__form-tag">Name</label>
-                            <input type="text" placeholder="Insert your name" class="contact__form-input">
+                            <input type="text" placeholder="Insert your name" name="from_name" class="contact__form-input">
                         </div>
                         <div class="contact__form-div">
-                            <label for="" class="contact__form-tag">Mail</label>
-                            <input type="email" placeholder="Insert your email" class="contact__form-input">
+                            <label for="" class="contact__form-tag" >Mail</label>
+                            <input type="email" placeholder="Insert your email" class="contact__form-input" name="email">
                         </div>
                         <div class="contact__form-div contact__form-area">
                             <label for="" class="contact__form-tag">Message</label>
-                            <textarea name="" id="" cols="30" rows="10" placeholder="Insert your message" class="contact__form-input"></textarea>
+                            <textarea name="message" id="" cols="30" rows="10" placeholder="Insert your message" class="contact__form-input"></textarea>
                         </div>
-                        <button class="button">Send Message</button>
+                        <button type="submit" class="button">Send Message</button>
+                        <p class="contact__form-submit-status">Message sent successfully!</p>
                     </form>
 
                 </div>
@@ -553,6 +554,7 @@
         </div>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <!--=============== SCROLLREVEAL ===============-->
     <script src="assets/js/scrollreveal.min.js"></script>
 

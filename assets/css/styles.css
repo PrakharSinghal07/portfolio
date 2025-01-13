@@ -873,6 +873,13 @@ body.light-theme {
   resize: none;
 }
 
+.contact__form-submit-status{
+  margin-top: 0.75rem;
+  color: var(--title-color);
+  font-size: var(--small-font-size);
+  visibility: hidden;
+}
+
 /*=============== FOOTER ===============*/
 .footer {
   background-color: var(--first-color);

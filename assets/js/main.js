@@ -79,8 +79,8 @@ const scrollActive = () => {
     sections.forEach(current => {
         const sectionHeight = current.offsetHeight,
             sectionTop = current.offsetTop - 58,
-        sectionId = current.getAttribute('id'),
-        sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']');
+            sectionId = current.getAttribute('id'),
+            sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']');
 
 
         if (scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight) {
@@ -91,6 +91,11 @@ const scrollActive = () => {
     })
 }
 window.addEventListener('scroll', scrollActive)
+
+// *******************************
+
+
+
 /*=============== LIGHT DARK THEME ===============*/
 
 const themeButton = document.querySelector('.change-theme')
@@ -107,9 +112,9 @@ const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx bx-
 
 // We validate if the user previously chose a topic
 if (selectedTheme) {
-  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-  document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](lightTheme)
-  themeButton.classList[selectedIcon === 'bx bx-moon' ? 'add' : 'remove'](iconTheme)
+    // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](lightTheme)
+    themeButton.classList[selectedIcon === 'bx bx-moon' ? 'add' : 'remove'](iconTheme)
 }
 
 // Activate / deactivate the theme manually with the button
@@ -132,15 +137,36 @@ const sr = ScrollReveal({
 })
 
 sr.reveal(`.home__data`)
-sr.reveal(`.home__handle`, {delay: 600})
-sr.reveal(`.home__social, .home__scroll`, {delay: 800, origin: 'bottom'})
-sr.reveal(`.about__container`, {delay: 200, origin: 'top'})
-sr.reveal(`.skills__content-1`, {delay: 100, origin: 'top'})
-sr.reveal(`.skills__content-2`, {delay: 200, origin: 'top'})
-sr.reveal(`.work__container`, {delay: 400, origin: 'bottom'})
-sr.reveal(`.certification__container`, {delay: 100, origin: 'left'})
-sr.reveal(`.contact__info`, {delay: 100, origin: 'left'})
-sr.reveal(`.contact__content`, {delay: 200, origin: 'right'})
-sr.reveal(`.certification__card-2`, {delay: 200, origin: 'bottom'})
+sr.reveal(`.home__handle`, { delay: 600 })
+sr.reveal(`.home__social, .home__scroll`, { delay: 800, origin: 'bottom' })
+sr.reveal(`.about__container`, { delay: 200, origin: 'top' })
+sr.reveal(`.skills__content-1`, { delay: 100, origin: 'top' })
+sr.reveal(`.skills__content-2`, { delay: 200, origin: 'top' })
+sr.reveal(`.work__container`, { delay: 400, origin: 'bottom' })
+sr.reveal(`.certification__container`, { delay: 100, origin: 'left' })
+sr.reveal(`.contact__info`, { delay: 100, origin: 'left' })
+sr.reveal(`.contact__content`, { delay: 200, origin: 'right' })
+sr.reveal(`.certification__card-2`, { delay: 200, origin: 'bottom' })
 
-sr.reveal(`.home__social, .home__scroll`, {delay: 900, origin: 'bottom'})
+sr.reveal(`.home__social, .home__scroll`, { delay: 900, origin: 'bottom' })
+
+/*======================== EmailJs Integration ==============================*/
+
+const formSubmitStatus = document.querySelector('.contact__form-submit-status');
+formSubmitStatus.style.visibility = 'hidden';
+window.onload = (function () {
+        emailjs.init({
+            publicKey: "uiE-lWPvGZB4_vaqQ",
+        });
+    })();
+
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    emailjs.sendForm('service_u2cjn2o', 'template_mbxvyg', this)
+        .then(function () {
+            formSubmitStatus.style.visibility = 'visible'
+        }, function (error) {
+            formSubmitStatus.innerText = 'Failed to send message!';
+            formSubmitStatus.style.visibility = 'visible'
+        });
+});
