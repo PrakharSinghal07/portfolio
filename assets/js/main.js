@@ -156,13 +156,13 @@ const formSubmitStatus = document.querySelector('.contact__form-submit-status');
 formSubmitStatus.style.visibility = 'hidden';
 window.onload = (function () {
         emailjs.init({
-            publicKey: "uiE-lWPvGZB4_vaqQ8",
+            publicKey: "uiE-lWPvGZB4_vaqQ",
         });
     })();
 
 document.getElementById('contactForm').addEventListener('submit', function (e) {
     e.preventDefault();
-    emailjs.sendForm('service_u2cjn2o', 'template_mbxvyg', this)
+    emailjs.sendForm('service_u2cjn2o', 'template_mbxvyg8', this)
         .then(function () {
             formSubmitStatus.style.visibility = 'visible'
         }, function (error) {
